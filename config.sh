@@ -3,10 +3,8 @@
 #########
 # PATHS #
 #########
+
 # scripts
-URI=$(readlink -f "$0")
-EXTRACT=/dbdump.sh
-ROOTDIR=${URI%${EXTRACT}}
 
 CORE=${ROOTDIR}/core.sh
 source ${CORE}

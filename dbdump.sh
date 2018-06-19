@@ -1,7 +1,14 @@
 #!/usr/bin/env bash
 
+# paths
+filename=$(basename "$0")
+URI=$(readlink -f "$0")
+EXTRACT=/${filename}
+ROOTDIR=${URI%${EXTRACT}}
+
+
 ##### load config #####
-source 'config.sh'
+source ${ROOTDIR}/config.sh
 
 if [ $# -lt 2 ]
   then
