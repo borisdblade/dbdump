@@ -1,0 +1,2 @@
+TRIGGER_DB_NAME=database_where_triggers_are
+TRIGGER_NAMES=my_first_trigger_name,my_second_trigger_name

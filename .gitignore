@@ -1,0 +1,4 @@
+/lists/db_list
+/lists/tr_list
+/dumps/*
+.env
