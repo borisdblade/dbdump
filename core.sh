@@ -50,7 +50,15 @@ drop_triggers(){
 
 export_db(){
 
-    $(mysqldump -h ${EXPORT_DB_HOST} -u ${EXPORT_DB_USER} -p${EXPORT_DB_PASS} ${db} > ${DUMP_DIR}${db}${DUMP_NAME})
+    # if no password for db
+    if [ -z ${EXPORT_DB_PASS} ]
+    then
+        pass=''
+    else
+        pass=-p${EXPORT_DB_PASS}
+    fi
+
+    $(mysqldump -h ${EXPORT_DB_HOST} -u ${EXPORT_DB_USER} ${pass} ${db} > ${DUMP_DIR}${db}${DUMP_NAME})
 
 }
 
@@ -58,7 +66,16 @@ import_db(){
 
     if [[ ${IMPORT_FLAG} == "-i" ]]
         then
-        $(mysql -h ${IMPORT_DB_HOST} -u ${IMPORT_DB_USER} -p${IMPORT_DB_PASS} ${db} < ${DUMP_DIR}${db}${DUMP_NAME})
+
+         # if no password for db
+        if [ -z ${EXPORT_DB_PASS} ]
+        then
+            pass=''
+        else
+            pass=-p${EXPORT_DB_PASS}
+        fi
+
+        $(mysql -h ${IMPORT_DB_HOST} -u ${IMPORT_DB_USER} ${pass} ${db} < ${DUMP_DIR}${db}${DUMP_NAME})
     fi
 
 }
