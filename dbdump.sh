@@ -6,6 +6,10 @@ URI=$(readlink -f "$0")
 EXTRACT=/${filename}
 ROOTDIR=${URI%${EXTRACT}}
 
+# dump exist
+if [ ! -d ${ROOTDIR}/dumps/ ]; then
+    $(mkdir ${ROOTDIR}/dumps/)
+fi
 
 ##### load config #####
 source ${ROOTDIR}/config.sh
