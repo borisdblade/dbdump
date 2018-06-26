@@ -68,11 +68,11 @@ import_db(){
         then
 
          # if no password for db
-        if [ -z ${EXPORT_DB_PASS} ]
+        if [ -z ${IMPORT_DB_PASS} ]
         then
             pass=''
         else
-            pass=-p${EXPORT_DB_PASS}
+            pass=-p${IMPORT_DB_PASS}
         fi
 
         $(mysql -h ${IMPORT_DB_HOST} -u ${IMPORT_DB_USER} ${pass} ${db} < ${DUMP_DIR}${db}${DUMP_NAME})
