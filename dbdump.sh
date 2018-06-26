@@ -1,10 +1,7 @@
 #!/usr/bin/env bash
 
 # paths
-filename=$(basename "$0")
-URI=$(readlink -f "$0")
-EXTRACT=/${filename}
-ROOTDIR=${URI%${EXTRACT}}
+ROOTDIR=$(cd "$(dirname "$0")"; pwd)
 
 # dump exist
 if [ ! -d ${ROOTDIR}/dumps/ ]; then
