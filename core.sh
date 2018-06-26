@@ -14,6 +14,8 @@ dumper(){
         printf "Importing into \e[93m${IMPORT_ENV}\e[0m \e[92m${db}\e[0m:\n"
         import_db > /dev/null 2>&1
 
+        # drop production triggers from main database on local if any
+        # see db_list
         drop_triggers
 
         # The blocking command has finished:
