@@ -58,7 +58,7 @@ export_db(){
         pass=-p${EXPORT_DB_PASS}
     fi
 
-    $(mysqldump -h ${EXPORT_DB_HOST} -u ${EXPORT_DB_USER} ${pass} ${db} > ${DUMP_DIR}${db}${DUMP_NAME})
+    $(mysqldump --column-statistics=0 -h ${EXPORT_DB_HOST} -u ${EXPORT_DB_USER} ${pass} ${db} > ${DUMP_DIR}${db}${DUMP_NAME})
 
 }
 
